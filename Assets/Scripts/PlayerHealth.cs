@@ -11,12 +11,14 @@ public class PlayerHealth : MonoBehaviour {
     private CharacterController characterController;
     private Animator anim;
     [SerializeField] private int currentHealth;
+    private AudioSource audio;
 
 	void Start ()
     {
         anim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         currentHealth = startingHealth;
+        audio = GetComponent<AudioSource>();
 	}
 	
 	void Update ()
@@ -43,6 +45,7 @@ public class PlayerHealth : MonoBehaviour {
             GameManager.instance.PlayerHit(currentHealth);
             anim.Play("Hurt");
             currentHealth -= 10;
+            audio.PlayOneShot(audio.clip);
         }
 
         if (currentHealth <= 0)

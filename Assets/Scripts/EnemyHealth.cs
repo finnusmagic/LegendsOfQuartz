@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour {
 
     [SerializeField] int startingHealth = 20;
     [SerializeField] float timeSinceLastHit = 0.5f;
-    [SerializeField] float dissapearSpeed = 2f;
+    [SerializeField] float dissapearSpeed = .5f;
 
     private AudioSource audio;
     float timer = 0f;
@@ -85,9 +85,9 @@ public class EnemyHealth : MonoBehaviour {
 
     IEnumerator RemoveEnemy()
     {
-        yield return new WaitForSeconds(4f);
-        dissapearEnemy = true;
         yield return new WaitForSeconds(2f);
+        dissapearEnemy = true;
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }
